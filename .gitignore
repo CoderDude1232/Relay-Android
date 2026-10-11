@@ -19,3 +19,6 @@ local.properties
 
 # Firebase client config, per developer (see app/build.gradle.kts).
 app/google-services.json
+
+# Android Studio project state, per developer.
+.idea/
