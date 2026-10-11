@@ -7,7 +7,7 @@ import org.junit.Assert.assertTrue
 import org.junit.Test
 
 /**
- * Parsing of the relay's call-push data block (PROTOCOL.md §7.5.1).
+ * Parsing of the relay's call-push data block (docs/PROTOCOL.md §7.5.1).
  *
  * Worth testing on its own because this is the one part of the call-wake path
  * that has to agree exactly with `server/internal/fcm/fcm.go`, and the only part

@@ -5,7 +5,7 @@ import org.json.JSONArray
 import org.json.JSONObject
 
 /**
- * Wire shapes for device linking (PROTOCOL.md §7.9).
+ * Wire shapes for device linking (docs/PROTOCOL.md §7.9).
  *
  * The **new** device shows [LinkQrPayload] in a QR code; the primary scans it,
  * seals a [LinkProvisioningPayload] to the ephemeral key inside, and leaves the

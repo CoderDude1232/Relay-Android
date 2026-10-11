@@ -43,7 +43,7 @@ data class DecryptedEnvelope(
  * Orchestrates sending and receiving — the counterpart of iOS's
  * `MessagingService`, minus the UI concerns.
  *
- * The fan-out rules it implements are the subtle part; see PROTOCOL.md §4.
+ * The fan-out rules it implements are the subtle part; see docs/PROTOCOL.md §4.
  */
 class RelayMessenger(
     private val api: RelayApiClient,
@@ -503,7 +503,7 @@ class RelayMessenger(
      *
      * `sync_recipient` carries the peer the message was actually for, so a linked
      * device files it in the right conversation and stores it as outgoing rather
-     * than as a message from ourselves (PROTOCOL.md §6.1, field 16).
+     * than as a message from ourselves (docs/PROTOCOL.md §6.1, field 16).
      *
      * Deliberately bypasses [sendOverWebSocket]: our own devices are implicitly
      * trusted, so the identity-acknowledgement check that guards sends to a peer
@@ -635,7 +635,7 @@ class RelayMessenger(
      * Note iOS does NOT use this path while sealed sender is on — it sends
      * individual pairwise sealed copies instead, since a sealed message cannot
      * be a broadcast without multi-recipient sealing. Both must be handled on
-     * receive; this is the sender-key half (PROTOCOL.md §1.4).
+     * receive; this is the sender-key half (docs/PROTOCOL.md §1.4).
      */
     suspend fun sendGroupMessage(
         socket: RelayWebSocket,

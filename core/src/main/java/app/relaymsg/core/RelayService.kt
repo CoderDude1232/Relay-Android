@@ -112,7 +112,7 @@ class RelayService private constructor(
         /** Often enough that an open conversation clears within half a minute. */
         private const val EXPIRY_SWEEP_MS = 30_000L
 
-        /** The relay's sealed-sender trust root, baked in (PROTOCOL.md §1.6). */
+        /** The relay's sealed-sender trust root, baked in (docs/PROTOCOL.md §1.6). */
         private const val TRUST_ROOT_BASE64 = "BUMHKPU9XPCdwHCVF8Eea8RxKLhbxq6BhpvYgBTo4IFU"
 
         private const val KV_ACCOUNT_ID = "account.id"
@@ -448,7 +448,7 @@ class RelayService private constructor(
      *
      * WebRTC is a large native dependency and lives in the app module, so the app
      * installs the real factory at start-up; until then calls signal correctly
-     * (and interoperate with iOS) but carry no media. See PROTOCOL.md §7.6.
+     * (and interoperate with iOS) but carry no media. See docs/PROTOCOL.md §7.6.
      */
     @Volatile
     var callTransportFactory: () -> CallTransport = { NoMediaTransport() }
@@ -1534,7 +1534,7 @@ class RelayService private constructor(
     /**
      * Resolves a username **without telling the relay which username we asked
      * for**: blind it, let the server evaluate the OPRF under its secret key,
-     * unblind, and look the resulting token up (PROTOCOL.md §1.7).
+     * unblind, and look the resulting token up (docs/PROTOCOL.md §1.7).
      *
      * Falls back to the legacy plaintext endpoint only when the relay reports
      * discovery unconfigured (503). That fallback is a genuine privacy

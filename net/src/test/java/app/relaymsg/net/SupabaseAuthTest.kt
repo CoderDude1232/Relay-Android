@@ -11,7 +11,7 @@ import org.junit.Before
 import org.junit.Test
 
 /**
- * The account layer's first hop (PROTOCOL.md §7.8).
+ * The account layer's first hop (docs/PROTOCOL.md §7.8).
  *
  * Worth pinning because the relay never sees the password — it only sees the
  * token this returns — so a malformed request here surfaces much later as a

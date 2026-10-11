@@ -6,7 +6,7 @@ import java.util.Locale
 
 /**
  * Client half of the ristretto255 2HashDH OPRF used for blinded contact
- * discovery (PROTOCOL.md §1.7).
+ * discovery (docs/PROTOCOL.md §1.7).
  *
  * A plaintext username or email is never sent to the relay: the client blinds
  * H1(x) with a random scalar, the server evaluates it under its secret key, the

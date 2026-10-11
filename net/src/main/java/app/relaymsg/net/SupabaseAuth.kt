@@ -22,7 +22,7 @@ data class SupabaseSession(
 )
 
 /**
- * Relay's account layer (PROTOCOL.md §7.8).
+ * Relay's account layer (docs/PROTOCOL.md §7.8).
  *
  * The relay does not hold passwords for humans: it verifies a **Supabase**
  * access token server-to-server and resolves the account from the Supabase user

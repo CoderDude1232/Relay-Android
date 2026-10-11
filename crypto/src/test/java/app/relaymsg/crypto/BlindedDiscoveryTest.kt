@@ -11,7 +11,7 @@ import org.junit.Test
 
 /**
  * Blinded-discovery (OPRF) interop, against vectors from the Go side
- * (PROTOCOL.md §1.7).
+ * (docs/PROTOCOL.md §1.7).
  *
  * The test plays both halves: it blinds an identifier the way the client does,
  * evaluates it with the vector's secret scalar the way `POST /v1/directory/oprf`

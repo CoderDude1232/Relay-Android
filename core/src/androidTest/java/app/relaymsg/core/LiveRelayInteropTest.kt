@@ -56,7 +56,7 @@ class LiveRelayInteropTest {
         const val TAG = "RelayInterop"
         const val DEFAULT_SERVER = "https://api.relaymsg.app"
 
-        /** Baked into the client; the relay logs it at startup (PROTOCOL.md §1.6). */
+        /** Baked into the client; the relay logs it at startup (docs/PROTOCOL.md §1.6). */
         const val TRUST_ROOT_BASE64 = "BUMHKPU9XPCdwHCVF8Eea8RxKLhbxq6BhpvYgBTo4IFU"
     }
 

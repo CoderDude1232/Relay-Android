@@ -42,7 +42,7 @@ dependencies {
     testImplementation(libs.lazysodium.java)
     testImplementation(libs.jna)
     // Used only to hand-build sealed-sender certificates in tests, mirroring the
-    // exact field layout the Go relay emits (PROTOCOL.md 1.6).
+    // exact field layout the Go relay emits (docs/PROTOCOL.md 1.6).
     testImplementation(libs.protobuf.javalite)
     testImplementation(libs.gson)
     androidTestImplementation(libs.androidx.junit)

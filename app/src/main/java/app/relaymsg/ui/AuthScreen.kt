@@ -48,7 +48,7 @@ private val USERNAME = Regex("^[a-zA-Z0-9._\\-]{1,64}$")
  * Sign-up, sign-in, and the username prompt.
  *
  * Accounts are held by Supabase and verified by the relay server-to-server
- * (PROTOCOL.md §7.8), so an email and password get a session there first and the
+ * (docs/PROTOCOL.md §7.8), so an email and password get a session there first and the
  * relay mints or recovers the account from it. The username is only asked for
  * when the relay says it has no account for this user yet.
  */

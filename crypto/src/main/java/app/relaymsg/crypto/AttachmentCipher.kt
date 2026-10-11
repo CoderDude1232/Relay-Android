@@ -7,7 +7,7 @@ import javax.crypto.spec.GCMParameterSpec
 import javax.crypto.spec.SecretKeySpec
 
 /**
- * Symmetric encryption for attachment blobs (PROTOCOL.md §1.8).
+ * Symmetric encryption for attachment blobs (docs/PROTOCOL.md §1.8).
  *
  * Each attachment uses a fresh random AES-256-GCM key; the sealed box
  * `nonce ‖ ciphertext ‖ tag` is what gets uploaded to the relay. The key and a

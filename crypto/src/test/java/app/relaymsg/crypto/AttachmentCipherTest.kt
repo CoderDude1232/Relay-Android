@@ -10,7 +10,7 @@ import org.junit.Assert.assertTrue
 import org.junit.Test
 
 /**
- * Attachment blob interop (PROTOCOL.md §1.8).
+ * Attachment blob interop (docs/PROTOCOL.md §1.8).
  *
  * The layout is the part that breaks across platforms: Apple's CryptoKit hands
  * back a single "combined" box of `nonce ‖ ciphertext ‖ tag`, while Java's GCM

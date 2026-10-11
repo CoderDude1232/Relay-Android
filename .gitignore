@@ -22,3 +22,6 @@ app/google-services.json
 
 # Android Studio project state, per developer.
 .idea/
+
+# Local agent notes.
+CLAUDE.md

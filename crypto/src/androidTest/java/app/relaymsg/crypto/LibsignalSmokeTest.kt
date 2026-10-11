@@ -15,7 +15,7 @@ import org.signal.libsignal.protocol.kem.KEMKeyType
  * *instrumented* test because it needs the native `libsignal_jni.so`, which only
  * loads on a device or emulator.
  *
- * It also pins the crypto parameters PROTOCOL.md §1.2/§1.3/§1.5 claims the iOS
+ * It also pins the crypto parameters docs/PROTOCOL.md §1.2/§1.3/§1.5 claims the iOS
  * client uses, so a future libsignal bump that changes any of them fails here
  * rather than silently breaking interop.
  */
@@ -26,21 +26,21 @@ class LibsignalSmokeTest {
     fun identityKeyIsThirtyThreeByteDjbEncoded() {
         val identity = IdentityKeyPair.generate()
         val serialized = identity.publicKey.serialize()
-        // PROTOCOL.md §1.2: Curve25519, 33-byte serialization 0x05 || X.
+        // docs/PROTOCOL.md §1.2: Curve25519, 33-byte serialization 0x05 || X.
         assertEquals(33, serialized.size)
         assertEquals(0x05.toByte(), serialized[0])
     }
 
     @Test
     fun kyberKeyTypeIsKyber1024() {
-        // PROTOCOL.md §1.3: the mandatory last-resort Kyber prekey.
+        // docs/PROTOCOL.md §1.3: the mandatory last-resort Kyber prekey.
         val pair = KEMKeyPair.generate(KEMKeyType.KYBER_1024)
         assertTrue(pair.publicKey.serialize().isNotEmpty())
     }
 
     @Test
     fun safetyNumberUsesSignalProductionParameters() {
-        // PROTOCOL.md §1.5: 5200 iterations, version 2, account ids as the
+        // docs/PROTOCOL.md §1.5: 5200 iterations, version 2, account ids as the
         // stable identifiers, 60 displayed digits.
         val local = IdentityKeyPair.generate()
         val remote = IdentityKeyPair.generate()

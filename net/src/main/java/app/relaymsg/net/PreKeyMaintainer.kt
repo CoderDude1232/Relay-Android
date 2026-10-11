@@ -31,7 +31,7 @@ class PreKeyMaintainer(
      *
      * Run on launch. Without it, a reinstall leaves the relay serving a signed
      * prekey whose private half is gone, and every new inbound session fails
-     * (PROTOCOL.md §1.3).
+     * (docs/PROTOCOL.md §1.3).
      */
     suspend fun republishSignedPreKeys(
         api: RelayApiClient,

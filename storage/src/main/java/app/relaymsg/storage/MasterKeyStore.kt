@@ -15,7 +15,7 @@ import javax.crypto.spec.GCMParameterSpec
 /**
  * Custody of the database master key.
  *
- * The design mirrors iOS (PROTOCOL.md §7.6): 32 random bytes are generated once
+ * The design mirrors iOS (docs/PROTOCOL.md §7.6): 32 random bytes are generated once
  * and **never stored in the clear**. They are wrapped with an AES key that lives
  * inside the Android Keystore — the Keystore counterpart of iOS's Secure Enclave
  * ECIES wrap — and only the wrapped blob is persisted.
@@ -101,7 +101,7 @@ class MasterKeyStore(
 
     /**
      * The device's registration id, generated once in 1..0x3FFF and persisted
-     * (PROTOCOL.md §1.2). A changed registration id makes every peer's session
+     * (docs/PROTOCOL.md §1.2). A changed registration id makes every peer's session
      * stale, so it must survive for the life of the install.
      */
     fun registrationId(): Int {

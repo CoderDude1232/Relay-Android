@@ -158,7 +158,7 @@ class RelayWebSocket(
      *
      * The relay accepts **exactly one** `DeviceMessage` per frame and treats
      * `destination_account` as an opaque mailbox id, so per-device fan-out is one
-     * call per mailbox (PROTOCOL.md §4.1).
+     * call per mailbox (docs/PROTOCOL.md §4.1).
      */
     suspend fun send(
         mailboxId: String,

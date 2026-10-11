@@ -34,7 +34,7 @@ interface RequestSigner {
 /**
  * Builds the `Authorization` header for a request.
  *
- * Two schemes exist (PROTOCOL.md §2). Signature auth is preferred and is what
+ * Two schemes exist (docs/PROTOCOL.md §2). Signature auth is preferred and is what
  * this client uses for everything; Basic exists solely to break the bootstrap
  * cycle described below.
  */
@@ -84,7 +84,7 @@ class RelayAuthenticator(
      * on file, and the endpoint that uploads it is itself authenticated. So the
      * bootstrap is `POST /v1/accounts` (unauthenticated) → generate the Keystore
      * key → `PUT /v1/devices/auth-key` **with Basic** → signatures from then on
-     * (PROTOCOL.md §2.3).
+     * (docs/PROTOCOL.md §2.3).
      */
     fun basicHeaders(): Map<String, String> {
         val raw = "${credentials.accountId}.${credentials.deviceId}:${credentials.password}"

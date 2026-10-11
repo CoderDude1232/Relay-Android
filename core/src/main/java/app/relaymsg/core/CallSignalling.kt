@@ -18,7 +18,7 @@ data class CallSignal(
 )
 
 /**
- * Builds and classifies call signalling messages (PROTOCOL.md §6.12).
+ * Builds and classifies call signalling messages (docs/PROTOCOL.md §6.12).
  *
  * Call signalling rides the same E2EE envelope as any other content; the relay
  * sees only ciphertext and cannot tell a call from a message.

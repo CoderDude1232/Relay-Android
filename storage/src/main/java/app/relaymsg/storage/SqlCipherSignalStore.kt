@@ -222,7 +222,7 @@ class SqlCipherSignalStore(
      * Marks the Kyber prekey used, and enforces replay protection.
      *
      * Relay publishes a single **last-resort** Kyber prekey per device with no
-     * one-time pool (PROTOCOL.md §1.3), so the record is marked used and kept —
+     * one-time pool (docs/PROTOCOL.md §1.3), so the record is marked used and kept —
      * deleting it would break every subsequent inbound PQXDH handshake.
      *
      * Because that key is reused by design, libsignal delegates replay detection

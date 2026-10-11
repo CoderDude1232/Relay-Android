@@ -10,7 +10,7 @@ import relay.content.content
 import relay.content.textMessage
 
 /**
- * Content padding (PROTOCOL.md §1.9).
+ * Content padding (docs/PROTOCOL.md §1.9).
  *
  * Padding does not affect decryption — receivers ignore the field — so a mismatch
  * would not break messaging. It would do something subtler and worse: make

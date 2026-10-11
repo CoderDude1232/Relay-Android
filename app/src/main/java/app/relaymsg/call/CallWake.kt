@@ -3,7 +3,7 @@ package app.relaymsg.call
 import android.content.Intent
 
 /**
- * The metadata a call push carries (PROTOCOL.md §7.5.1).
+ * The metadata a call push carries (docs/PROTOCOL.md §7.5.1).
  *
  * Deliberately thin, and deliberately no thinner than iOS's VoIP payload: enough
  * to ring with a name, and nothing else. The OFFER itself — the SDP, and

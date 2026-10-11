@@ -15,7 +15,7 @@ import org.junit.Assert.assertTrue
 import org.junit.Test
 
 /**
- * `Relay-Sig` request-authentication interop (PROTOCOL.md §2.1).
+ * `Relay-Sig` request-authentication interop (docs/PROTOCOL.md §2.1).
  *
  * Android is the **first** client to implement this scheme — iOS still sends
  * HTTP Basic — so there is no second implementation to compare against in the

@@ -29,7 +29,7 @@ data class IncomingEnvelope(
     /**
      * Server-stamped sender. **Empty means sealed sender** — the relay does not
      * know who sent it, and the recipient recovers the sender from the sealed
-     * blob's certificate instead (PROTOCOL.md §1.6).
+     * blob's certificate instead (docs/PROTOCOL.md §1.6).
      */
     val senderAccount: String,
     val senderDevice: Int,
@@ -76,7 +76,7 @@ sealed interface SendOutcome {
      * Note the server lists **every other device** of the destination in
      * [missing] on a cross-account send — including ones an earlier frame already
      * reached. Retrying everything here duplicates messages; see the filtering
-     * rule in PROTOCOL.md §4.2.
+     * rule in docs/PROTOCOL.md §4.2.
      */
     data class MismatchedDevices(
         val missing: List<Int>,

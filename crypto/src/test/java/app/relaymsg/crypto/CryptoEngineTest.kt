@@ -64,7 +64,7 @@ class CryptoEngineTest {
     fun `registration id round-trips through the engine`() {
         val peer = Peer()
         assertEquals(peer.registrationId, peer.engine.registrationId())
-        // PROTOCOL.md §1.2: generated in 1..0x3FFF.
+        // docs/PROTOCOL.md §1.2: generated in 1..0x3FFF.
         assertTrue(peer.engine.registrationId() in 1..0x3FFF)
     }
 
@@ -74,7 +74,7 @@ class CryptoEngineTest {
     fun `publication carries a mandatory kyber prekey and signed prekey`() {
         val publication = Peer().publish(oneTimeIds = 100..102)
 
-        // PQXDH: the Kyber pre-key is not optional (PROTOCOL.md §1.3).
+        // PQXDH: the Kyber pre-key is not optional (docs/PROTOCOL.md §1.3).
         assertTrue(publication.kyberPreKey.publicKey.isNotEmpty())
         assertTrue(publication.kyberPreKey.signature.isNotEmpty())
         assertTrue(publication.signedPreKey.publicKey.isNotEmpty())

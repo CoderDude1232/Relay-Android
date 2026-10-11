@@ -29,7 +29,7 @@ import kotlinx.coroutines.launch
  *
  * This is the Android half of the call-wake path. The relay's FCM message is
  * **high priority and data-only**, which is what buys a Doze exemption and a
- * short window to run — see PROTOCOL.md §7.5.1. That window is only long enough
+ * short window to run — see docs/PROTOCOL.md §7.5.1. That window is only long enough
  * to start this service; everything after it (fetching the OFFER, answering,
  * trickling ICE) happens here, under a foreground service so the system does not
  * freeze the process mid-call.
@@ -188,7 +188,7 @@ class CallService : Service() {
             val relay = RelayRuntime.require(applicationContext)
             val accepted = relay?.calls?.accept() ?: false
             if (!accepted) {
-                // Until the WebRTC transport lands (PROTOCOL.md §7.6) this is the
+                // Until the WebRTC transport lands (docs/PROTOCOL.md §7.6) this is the
                 // expected outcome: signalling is right, but there is nothing to
                 // carry audio, so the call ends rather than pretending to connect.
                 Log.w(TAG, "could not answer: no media transport")

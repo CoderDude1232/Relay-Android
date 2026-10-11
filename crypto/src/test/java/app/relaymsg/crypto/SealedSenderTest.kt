@@ -14,7 +14,7 @@ import org.signal.libsignal.protocol.ecc.ECPrivateKey
 import org.signal.libsignal.protocol.state.impl.InMemorySignalProtocolStore
 
 /**
- * Sealed-sender tests (PROTOCOL.md §1.6).
+ * Sealed-sender tests (docs/PROTOCOL.md §1.6).
  *
  * The relay mints delivery certificates in Go (`server/internal/sealedsender/cert.go`).
  * That package is under `internal/`, so a vector generator in another module cannot
@@ -22,7 +22,7 @@ import org.signal.libsignal.protocol.state.impl.InMemorySignalProtocolStore
  * minter emits** and signs with libsignal's own XEd25519 (`ECPrivateKey.calculateSignature`,
  * the same scheme `signXEd25519` implements). libsignal then validates it.
  *
- * That proves the layout documented in PROTOCOL.md is the layout libsignal accepts.
+ * That proves the layout documented in docs/PROTOCOL.md is the layout libsignal accepts.
  * It does NOT prove the live relay's certificates validate — that needs a real
  * `GET /v1/certificate/delivery` response and lands in Stage 4, where the client
  * can authenticate.

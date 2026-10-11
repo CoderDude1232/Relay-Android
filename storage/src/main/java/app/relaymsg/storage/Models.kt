@@ -53,7 +53,7 @@ data class Conversation(
  *
  * The relay stores none of this — groups are client-authoritative and every
  * field here arrives inside an E2EE `GroupUpdate` — so this table is the only
- * source of truth (PROTOCOL.md §0.2, §7.3).
+ * source of truth (docs/PROTOCOL.md §0.2, §7.3).
  */
 data class StoredGroup(
     val id: String,

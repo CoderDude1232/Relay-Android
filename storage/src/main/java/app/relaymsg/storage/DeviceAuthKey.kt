@@ -14,7 +14,7 @@ import java.security.spec.ECGenParameterSpec
  * One key serves three purposes on the server side, all verified against the
  * single stored `devices.auth_public_key`:
  *
- *  - `Relay-Sig` per-request signatures (PROTOCOL.md §2.1),
+ *  - `Relay-Sig` per-request signatures (docs/PROTOCOL.md §2.1),
  *  - remote-wipe (nuke) commands,
  *  - device-list mutations (add / link / remove).
  *

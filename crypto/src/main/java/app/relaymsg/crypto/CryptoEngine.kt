@@ -42,7 +42,7 @@ class CryptoEngine(
     val localAddress: SignalProtocolAddress,
 ) {
     companion object {
-        /** Signal's production parameters for safety-number generation (PROTOCOL.md §1.5). */
+        /** Signal's production parameters for safety-number generation (docs/PROTOCOL.md §1.5). */
         private const val FINGERPRINT_ITERATIONS = 5200
         private const val FINGERPRINT_VERSION = 2
 
@@ -94,7 +94,7 @@ class CryptoEngine(
      * Pass an empty [oneTimePreKeyIds] range to re-publish only the identity,
      * signed pre-key and Kyber pre-key — what the client does on every launch so
      * the relay can never serve a signed pre-key whose private half was lost to a
-     * reinstall (PROTOCOL.md §1.3).
+     * reinstall (docs/PROTOCOL.md §1.3).
      */
     fun generatePreKeyPublication(
         signedPreKeyId: Int,
@@ -246,7 +246,7 @@ class CryptoEngine(
      *
      * [senderCertificate] is the serialized certificate from
      * `GET /v1/certificate/delivery`. [groupId] is empty even for group sends,
-     * matching iOS (PROTOCOL.md §1.6).
+     * matching iOS (docs/PROTOCOL.md §1.6).
      */
     fun sealedEncrypt(
         plaintext: ByteArray,
@@ -314,7 +314,7 @@ class CryptoEngine(
      * the Sender Key Distribution Message to hand to each group member over their
      * pairwise session, so they can decrypt our group messages. A fresh
      * [distributionId] yields a fresh sender key — how a removed member is locked
-     * out (PROTOCOL.md §1.4).
+     * out (docs/PROTOCOL.md §1.4).
      */
     fun senderKeyDistributionMessage(distributionId: UUID): ByteArray =
         GroupSessionBuilder(store).create(localAddress, distributionId).serialize()

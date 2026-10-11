@@ -10,7 +10,7 @@ data class ParsedIceCandidate(
 )
 
 /**
- * The wire encoding of an ICE candidate (PROTOCOL.md §6.12).
+ * The wire encoding of an ICE candidate (docs/PROTOCOL.md §6.12).
  *
  * `CallMessage.ice` is a JSON object, not an SDP line, and its shape is iOS's
  * (`CallManager.iceJSON` / `parseIce`):

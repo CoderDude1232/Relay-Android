@@ -12,7 +12,7 @@ import org.signal.libsignal.protocol.ecc.ECPublicKey
 class ProvisioningCipherException(message: String) : IllegalArgumentException(message)
 
 /**
- * End-to-end encryption for the device-linking payload (PROTOCOL.md §7.9).
+ * End-to-end encryption for the device-linking payload (docs/PROTOCOL.md §7.9).
  *
  * The new device makes an ephemeral X25519 pair and shows the public half in a
  * QR code. The primary does ECDH against it, derives a key with HKDF-SHA256 and

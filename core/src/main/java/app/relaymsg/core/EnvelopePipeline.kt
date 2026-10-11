@@ -40,7 +40,7 @@ class EnvelopePipeline(
      *
      * Failures are the caller's to handle, but note the contract: an envelope
      * that cannot be decrypted must still be **acked and dropped**, or it
-     * redelivers forever (PROTOCOL.md §4.3).
+     * redelivers forever (docs/PROTOCOL.md §4.3).
      */
     /**
      * Whether a sender is blocked. Installed by [RelayService] after
@@ -194,7 +194,7 @@ class EnvelopePipeline(
      *
      * Groups are client-authoritative — the relay stores nothing — so this table
      * IS the roster, and [Content.getGroupId] plus the update's member list is
-     * the only source of truth (PROTOCOL.md §0.2, §7.3).
+     * the only source of truth (docs/PROTOCOL.md §0.2, §7.3).
      */
     private fun applyGroupUpdate(content: Content, sender: String, groupId: String?): Outcome {
         val update = content.groupUpdate

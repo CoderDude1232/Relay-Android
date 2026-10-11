@@ -168,7 +168,7 @@ class MessageStore(private val db: RelayDatabase) {
      *
      * Incoming messages use the **envelope id** as the row id, which is what makes
      * at-least-once delivery safe: a redelivered envelope collides here and is
-     * silently ignored (PROTOCOL.md §4.3).
+     * silently ignored (docs/PROTOCOL.md §4.3).
      */
     fun insertMessage(
         id: String,
@@ -682,7 +682,7 @@ class MessageStore(private val db: RelayDatabase) {
      *
      * Double Ratchet decryption is destructive, so exactly one process may
      * decrypt a given envelope. This is the dedup point required by at-least-once
-     * delivery (PROTOCOL.md §4.3), and it is shared with the push path.
+     * delivery (docs/PROTOCOL.md §4.3), and it is shared with the push path.
      */
     fun claimEnvelope(id: String): Boolean = db.transaction {
         val seen = db.query("SELECT 1 FROM processed_envelopes WHERE id = ?", listOf(id)) { it.int(0) }

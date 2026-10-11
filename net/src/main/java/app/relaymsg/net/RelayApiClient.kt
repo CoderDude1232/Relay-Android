@@ -151,7 +151,7 @@ class RelayApiClient(
      * Uploads the device's P-256 auth public key, **over HTTP Basic**.
      *
      * This is the one call that cannot be signed: `Relay-Sig` verifies against
-     * this very key, which the server does not have yet (PROTOCOL.md §2.3).
+     * this very key, which the server does not have yet (docs/PROTOCOL.md §2.3).
      */
     suspend fun uploadDeviceAuthKeyWithBasicAuth(publicKey: ByteArray) {
         require(publicKey.size == 65 && publicKey[0] == 0x04.toByte()) {

@@ -123,7 +123,7 @@ interface CallTransport {
 }
 
 /**
- * The transport used until WebRTC is wired in (PROTOCOL.md §7.6).
+ * The transport used until WebRTC is wired in (docs/PROTOCOL.md §7.6).
  *
  * It fails loudly rather than pretending: signalling is complete and
  * interoperable, but a call placed or answered through this transport carries no
@@ -212,7 +212,7 @@ class CallManager(
      *
      * Note there is no ICE *restart* here, deliberately: a restart means sending
      * a fresh OFFER mid-call, and iOS answers an OFFER for a call it already has
-     * with BUSY. See PROTOCOL.md §7.5.5.
+     * with BUSY. See docs/PROTOCOL.md §7.5.5.
      */
     private fun onMediaState(state: MediaConnectionState) {
         when (state) {

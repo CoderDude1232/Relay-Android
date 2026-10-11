@@ -6,7 +6,7 @@ import relay.content.ContentOuterClass.Content
 
 /**
  * Pads a serialized `Content` before encryption so the relay observes fewer
- * exact plaintext-size differences (PROTOCOL.md §1.9).
+ * exact plaintext-size differences (docs/PROTOCOL.md §1.9).
  *
  * Sizes are rounded up to the next bucket: 256, 512, 1024, 4096, then to the next
  * 4096-byte boundary above that. The filler goes in `Content.padding` (field 12),
