@@ -2,8 +2,9 @@
 
 You are building the **Android client** for Relay, an end-to-end-encrypted
 messenger. A complete iOS client, a Go relay server, and the protobuf wire
-schema already live in this monorepo (repo root). **The existing repo is the
-source of truth for the protocol. Your job is to build an Android app that
+schema live in the Relay repo (https://github.com/CoderDude1232/Relay); check it
+out next to this one as `../Relay`. **That repo is the source of truth for the
+protocol. Your job is to build an Android app that
 interoperates with it byte-for-byte — not to invent anything.**
 
 Owner: Ethan. Users are primarily in Australia. Relay is iOS-shipping today; this
@@ -13,15 +14,16 @@ follow).
 ## First task (before any app code)
 
 Read and summarize the contract, then get sign-off:
-- `../proto/relay.proto` (server-visible envelopes + WS frames) and
-  `../proto/content.proto` (client-only plaintext). **Codegen Kotlin from these**;
-  never hand-transcribe field numbers.
-- `../server/README.md` — the full REST + WebSocket API (auth, endpoints, fan-out,
+- `../Relay/proto/relay.proto` (server-visible envelopes + WS frames) and
+  `../Relay/proto/content.proto` (client-only plaintext). They're copied into
+  `schema/` here, and **Kotlin is generated from those copies**; never
+  hand-transcribe field numbers, and never edit the copies (see schema/README.md).
+- `../Relay/server/README.md` — the full REST + WebSocket API (auth, endpoints, fan-out,
   at-least-once delivery, sealed sender, queue/ack, directory/OPRF, groups, backup).
-- Root `../CLAUDE.md` and the iOS sources (`../Relay/`, `../CryptoCore/`,
-  `../SecureStorage/`, `../RelayKit/`, `../RelayCore/`) — to mirror behavior.
+- Root `../Relay/CLAUDE.md` and the iOS sources (`../Relay/Relay/`, `../Relay/CryptoCore/`,
+  `../Relay/SecureStorage/`, `../Relay/RelayKit/`, `../Relay/RelayCore/`) — to mirror behavior.
 
-Produce `android/PROTOCOL.md`: every endpoint, every `content.proto` field number,
+Produce `PROTOCOL.md`: every endpoint, every `content.proto` field number,
 and every crypto parameter you must match. **Have the owner review it before Stage 1.**
 
 ## Non-negotiable interop requirements (must match iOS exactly)
@@ -55,7 +57,7 @@ and every crypto parameter you must match. **Have the owner review it before Sta
   model: a data-message wake carries no message content; the client fetches
   `GET /v1/queue`, decrypts on-device, acks via `POST /v1/messages/ack`. ⚠️ This needs
   a **server-side FCM sender** added alongside the existing APNs one — propose it but
-  flag it for the owner; it touches the shared `../server/` and must stay consistent
+  flag it for the owner; it touches the shared `../Relay/server/` and must stay consistent
   with the contentless-push design.
 - **Secure storage:** Secure Enclave/Keychain → **Android Keystore** (hardware-backed,
   StrongBox when available). DB: **SQLCipher for Android**, master key wrapped by a
@@ -97,5 +99,5 @@ layers especially.
 
 - Requires Android Studio + JDK 17 + Android SDK + an emulator on the owner's Mac.
   Claude Code writes the code; the owner builds/runs in Android Studio.
-- Anything affecting the wire → also update `../proto/` and `../server/README.md`, and
+- Anything affecting the wire → also update `../Relay/proto/` and `../Relay/server/README.md`, and
   keep the iOS client in sync (raise it with the owner; the iOS/server session handles it).

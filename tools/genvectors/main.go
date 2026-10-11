@@ -10,7 +10,7 @@
 //	~/sdk/go/bin/go run . -kind=wire   > ../../proto/src/test/resources/golden/wire-vectors.json
 //	~/sdk/go/bin/go run . -kind=crypto > ../../crypto/src/test/resources/golden/crypto-vectors.json
 //
-// Nothing here writes to ../../../server; the module only imports it.
+// Nothing here writes to the relay (../../../Relay/server); the module only imports it.
 package main
 
 import (

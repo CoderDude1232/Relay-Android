@@ -8,8 +8,8 @@ plugins {
 // ---------------------------------------------------------------------------
 // Protobuf codegen.
 //
-// The schema source of truth is ../../proto (the repo root), shared with the Go
-// relay and the iOS client. Generated code is NEVER checked in and NEVER
+// The schema is schema/*.proto, a copy of proto/ in the Relay repo (the source
+// of truth, shared with the Go relay and the iOS client; see schema/README.md). Generated code is NEVER checked in and NEVER
 // hand-edited: a field number may only change by changing the .proto.
 //
 // protoc is resolved from Maven rather than the PATH — this Mac has no Homebrew
@@ -82,10 +82,10 @@ abstract class GenerateProtos @Inject constructor(
     }
 }
 
-val repoProtoDir = rootProject.layout.projectDirectory.dir("../proto")
+val repoProtoDir = rootProject.layout.projectDirectory.dir("schema")
 
 val generateProtos = tasks.register<GenerateProtos>("generateProtos") {
-    description = "Generates Java/Kotlin sources from the repo-root proto schema."
+    description = "Generates Java/Kotlin sources from the schema/ protos."
     protoRoot.set(repoProtoDir)
     protoFiles.from(repoProtoDir.asFileTree.matching { include("*.proto") })
     protocExecutable.from(protocTool)

@@ -520,7 +520,7 @@ reset healthy sessions — wasteful but correct; documented as an accepted gap o
 
 ## 6. `content.proto` — every field number (`package relay.content`)
 
-The relay never parses this. **Codegen Kotlin from `../proto/content.proto`.**
+The relay never parses this. **Codegen Kotlin from `../Relay/proto/content.proto`.**
 
 ### 6.1 `Content`
 
@@ -746,7 +746,7 @@ Current APNs contract, which FCM must preserve:
 - Opt-in (`PUT /v1/devices/me/push-content` `{includeContent:true}`) adds `"e"` =
   base64 of the serialized `Envelope` for a faster wake.
 
-**Proposed** (not implemented — needs your approval since it touches `../server/`):
+**Proposed** (not implemented — needs your approval since it touches `../Relay/server/`):
 
 1. Add a `push_kind` (`apns`|`fcm`) + token column, or a new
    `PUT /v1/devices/fcm {token}` endpoint.
@@ -1138,7 +1138,7 @@ linked device starts with contacts but no messages.
 
 A backup is an opaque blob. Both clients produce and consume the same bytes, so
 a backup taken on iOS restores on Android and the reverse. Reference:
-`../Relay/CloudBackupManager.swift`, `../Relay/BackupView.swift`,
+`../Relay/Relay/CloudBackupManager.swift`, `../Relay/Relay/BackupView.swift`,
 `core/.../BackupCrypto.kt`.
 
 **Recovery-key form** (iOS's iCloud backup):
@@ -1178,7 +1178,7 @@ Drive included. Swapping in Drive later changes nothing above this line.
 
 Rules: **one stage at a time, owner check-in between each, no building ahead.** Each
 stage ends with an interop test against `https://api.relaymsg.app` and a real iOS
-build on your device. Anything touching `../proto/` or `../server/` is raised with
+build on your device. Anything touching `../Relay/proto/` or `../Relay/server/` is raised with
 you, never changed by me.
 
 A note on running things: `java` is not on this shell's `PATH`, but Android Studio's
@@ -1193,12 +1193,12 @@ Sign-off on §0 drift items, §2.3 bootstrap, §7.5 FCM, §7.6 mappings.
 
 Package `app.relaymsg`; modules `:proto :crypto :storage :net :core :app`; JDK 17
 bytecode; `libsignal-android:0.97.4`; protoc-generated Java-lite + Kotlin DSL from
-`../proto/` at build time (nothing checked in); libsodium, OkHttp, SQLCipher and
+`../Relay/proto/` at build time (nothing checked in); libsodium, OkHttp, SQLCipher and
 coroutines wired to their stage's module.
 
 **Interop test — passing:** `:proto`'s `WireVectorsTest` runs 22 golden vectors
 generated from the relay's **own Go protobuf types** by `android/tools/genvectors`
-(a standalone Go module that only *imports* `../server`, never modifies it).
+(a standalone Go module that only *imports* `../Relay/server`, never modifies it).
 
 One correction to the plan as written above: it promised the Kotlin bytes would
 *equal* the Go bytes. They don't, legitimately — **protobuf field order is not
@@ -1251,7 +1251,7 @@ attachment blob layout against a Go-produced blob, and the padding bucket table.
 1. **The OPRF vectors are transcribed, not imported.** `server/internal/oprf` and
    `internal/sealedsender` are under `internal/`, so Go forbids importing them
    from the separate `tools/genvectors` module — the module is separate precisely
-   so vector generation cannot modify `../server/`. The generator therefore
+   so vector generation cannot modify `../Relay/server/`. The generator therefore
    re-implements the ~15-line OPRF using the same `gtank/ristretto255` library the
    server uses. That still cross-checks everything that actually differs between
    implementations (ristretto encodings, SHA-512 → `from_hash`, domain tags, hash
@@ -1474,7 +1474,7 @@ Each gets its own interop test against iOS.
 
 ## 9. Open questions for you
 
-1. **FCM (§7.5)** — do I write the `../server/` FCM sender proposal up as a spec for
+1. **FCM (§7.5)** — do I write the `../Relay/server/` FCM sender proposal up as a spec for
    the iOS/server session, or do you want Android to ship WS-only first?
 2. **`Relay-Sig` bootstrap (§2.3)** — OK to use HTTP Basic for the single
    `PUT /v1/devices/auth-key` call on a fresh device, then signatures for everything
