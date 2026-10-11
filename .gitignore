@@ -16,3 +16,6 @@ local.properties
 
 # Kotlin 2.x writes transient compiler logs here; build output, not source.
 .kotlin/
+
+# Firebase client config, per developer (see app/build.gradle.kts).
+app/google-services.json
